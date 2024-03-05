@@ -1,5 +1,7 @@
 import datetime
 import unittest
+
+import employee
 from employee import Employee
 from employee_manager import EmployeeManager
 from relations_manager import RelationsManager
@@ -51,6 +53,14 @@ class TestEmployeeRelationsManager(unittest.TestCase):
     def test_retrieve_tomas_andre_team_members(self):
         tomas_andre_team_members = self.relations_manager.get_team_members(self.tomas_andre)
         self.assertEqual(len(tomas_andre_team_members), 0, "Tomas Andre should not have any team members")
+
+    def test_judge_overcash_not_in_database(self):
+        all_employees = self.relations_manager.get_all_employees()
+        jude_overcash_exists = any(employee.first_name == "Jude" and employee.last_name == "Overcash"
+                                   for employee in all_employees)
+        self.assertFalse(jude_overcash_exists, "Jude Overcash should not be stored in database!")
+
+
 
 
 if __name__ == '__main__':

@@ -15,6 +15,9 @@ class TestEmployeeRelationsManager(unittest.TestCase):
         self.gretchen_walford = Employee(id=4, first_name="Gretchen", last_name="Walford", base_salary=4000,
                                          birth_date=datetime.date(1960, 1, 1),
                                          hire_date=datetime.date(1990, 1, 1))
+        self.tomas_andre = Employee(id=5, first_name="Tomas", last_name="Andre", base_salary=1600,
+                                    birth_date=datetime.date(1995, 1, 1),
+                                    hire_date=datetime.date(2015, 1, 1))
 
     def test_team_leader_john_doe(self):
         employees = self.relations_manager.get_all_employees()
@@ -40,6 +43,14 @@ class TestEmployeeRelationsManager(unittest.TestCase):
         gretchen_walford_base_salary = self.gretchen_walford.base_salary
         expected_base_salary = 4000
         self.assertEqual(gretchen_walford_base_salary, expected_base_salary, "Gretchen Walford's salary is not $4000!")
+
+    def test_tomas_andre_not_team_leader(self):
+        is_tomas_andre_leader = self.relations_manager.is_leader(self.tomas_andre)
+        self.assertFalse(is_tomas_andre_leader, "Tomas Andre should not be a teamleader!")
+
+    def test_retrieve_tomas_andre_team_members(self):
+        tomas_andre_team_members = self.relations_manager.get_team_members(self.tomas_andre)
+        self.assertEqual(len(tomas_andre_team_members), 0, "Tomas Andre should not have any team members")
 
 
 if __name__ == '__main__':

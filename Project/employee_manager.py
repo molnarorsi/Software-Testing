@@ -2,7 +2,6 @@ import datetime
 from employee import Employee
 from relations_manager import RelationsManager
 
-
 class EmployeeManager:
     yearly_bonus = 100
     leader_bonus_per_member = 200

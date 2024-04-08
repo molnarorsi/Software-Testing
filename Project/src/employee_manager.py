@@ -1,6 +1,6 @@
 import datetime
 from src.employee import Employee
-from relations_manager import RelationsManager
+from src.relations_manager import RelationsManager
 
 class EmployeeManager:
     yearly_bonus = 100

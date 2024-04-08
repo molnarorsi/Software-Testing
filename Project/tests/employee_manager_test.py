@@ -1,5 +1,9 @@
 import unittest
 from datetime import date
+import sys
+import os
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from src.employee_manager import EmployeeManager
 from src.relations_manager import RelationsManager

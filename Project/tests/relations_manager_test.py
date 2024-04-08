@@ -1,10 +1,11 @@
 import datetime
 import unittest
-
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.employee import Employee
 from src.employee_manager import EmployeeManager
 from src.relations_manager import RelationsManager
-
 
 class TestEmployeeRelationsManager(unittest.TestCase):
     def setUp(self):
@@ -58,8 +59,6 @@ class TestEmployeeRelationsManager(unittest.TestCase):
         jude_overcash_exists = any(employee.first_name == "Jude" and employee.last_name == "Overcash"
                                    for employee in all_employees)
         self.assertFalse(jude_overcash_exists, "Jude Overcash should not be stored in database!")
-
-
 
 
 if __name__ == '__main__':

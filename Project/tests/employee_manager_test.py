@@ -1,4 +1,4 @@
-import unittest
+import pytest
 from datetime import date
 import sys
 import os
@@ -10,9 +10,9 @@ from src.relations_manager import RelationsManager
 from src.employee import Employee
 
 
-class TestEmployeeManager(unittest.TestCase):
+class TestEmployeeManager:
 
-    def setUp(self):
+    def setup_method(self):
         self.rm = RelationsManager()
         self.em = EmployeeManager(relations_manager=self.rm)
 
@@ -29,7 +29,7 @@ class TestEmployeeManager(unittest.TestCase):
         expected_salary = 3600
         salary = self.em.calculate_salary(employee)
 
-        self.assertEqual(expected_salary, salary)
+        assert expected_salary == salary
 
     def test_team_leader_salary(self):
         leader = Employee(
@@ -45,7 +45,7 @@ class TestEmployeeManager(unittest.TestCase):
         salary = self.em.calculate_salary(leader)
 
         expected_salary = 3600
-        self.assertEqual(expected_salary, salary)
+        assert expected_salary == salary
 
     def test_email_notfication(self):
         employee = Employee(
@@ -61,4 +61,4 @@ class TestEmployeeManager(unittest.TestCase):
         expected_message = f"{employee.first_name} {employee.last_name} your salary: {salary} has been transferred to you."
         message = self.em.calculate_salary_and_send_email(employee)
 
-        self.assertEqual(expected_message, message)
+        assert expected_message == message

@@ -1,9 +1,9 @@
 import unittest
 from datetime import date
 
-from employee_manager import EmployeeManager
-from relations_manager import RelationsManager
-from employee import Employee
+from src.employee_manager import EmployeeManager
+from src.relations_manager import RelationsManager
+from src.employee import Employee
 
 
 class TestEmployeeManager(unittest.TestCase):

@@ -1,5 +1,5 @@
 import datetime
-from employee import Employee
+from src.employee import Employee
 from relations_manager import RelationsManager
 
 class EmployeeManager:
